@@ -1,0 +1,35 @@
+name: lint-i18n-strings
+
+on:
+  pull_request:
+    paths:
+      - '**.strings'
+      - '.github/workflows/lint-i18n-strings.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Bundle install
+        run: |-
+          cd scripts/localization
+          bundle install
+          cd ../
+      
+      - name: Lint Localizable.strings
+        run: |-
+          projects=(
+              "i18nLocalizableStringsExample"
+          )
+
+          for project in "${projects[@]}"
+          do
+              echo "Start lint to $project"
+              ruby ./scripts/localization/localizable_strings_checker.rb "$project/Languages"
+          done
