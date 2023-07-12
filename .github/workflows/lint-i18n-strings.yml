@@ -3,7 +3,7 @@ name: lint-i18n-strings
 on:
   pull_request:
     paths:
-      - '**.strings'
+      - 'Localizable.strings'
       - '.github/workflows/lint-i18n-strings.yml'
 
 jobs:
@@ -31,5 +31,5 @@ jobs:
           for project in "${projects[@]}"
           do
               echo "Start lint to $project"
-              ruby ./scripts/localization/localizable_strings_checker.rb "$project/Languages"
+              ruby ./scripts/localization/localizable_strings_checker.rb "$project"
           done
