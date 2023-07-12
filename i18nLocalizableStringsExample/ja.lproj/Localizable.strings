@@ -1,0 +1,7 @@
+// Hello World
+"hello.world" = "こんにちは、世界！";
+
+// 誰かへのあいさつ
+"hello.%@" = "こんにちは、%@！";
+
+"%lld.percent" = "%lld%% 勇気";
