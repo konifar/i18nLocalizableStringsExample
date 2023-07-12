@@ -3,7 +3,7 @@ name: lint-i18n-strings
 on:
   pull_request:
     paths:
-      - '**.strings'
+      - 'Localizable.strings'
       - '.github/workflows/lint-i18n-strings.yml'
 
 jobs:
